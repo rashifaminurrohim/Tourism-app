@@ -2,8 +2,6 @@ package com.dicoding.tourismapp.core.data.source.remote
 
 import android.annotation.SuppressLint
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.dicoding.tourismapp.core.data.source.remote.network.ApiResponse
 import com.dicoding.tourismapp.core.data.source.remote.network.ApiService
 import com.dicoding.tourismapp.core.data.source.remote.response.ListTourismResponse
@@ -13,9 +11,6 @@ import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
-import retrofit2.Callback
-import retrofit2.Call
-import retrofit2.Response
 
 class RemoteDataSource private constructor(private val apiService: ApiService) {
     companion object {
@@ -34,7 +29,7 @@ class RemoteDataSource private constructor(private val apiService: ApiService) {
 
         // get data from apiservice
         val client = apiService.getList()
-        
+
         client
             .subscribeOn(Schedulers.computation())
             .observeOn(AndroidSchedulers.mainThread())
