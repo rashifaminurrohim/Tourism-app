@@ -52,7 +52,7 @@ class TourismRepository private constructor(
         }.asFlow()
 
     override fun getFavoriteTourism(): Flow<List<Tourism>> {
-        return localDataSource.getAllTourism().map {
+        return localDataSource.getFavoriteTourism().map {
             DataMapper.mapEntitiesToDomain(it)
         }
     }
